@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>♥♥ Please ♥♥</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <style>
+    body {
+      background-color: cornflowerblue;
+      color: aliceblue;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      position: relative;
+    }
+    .container {
+      width: 500px;
+      margin: auto;
+      padding-top: 20%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="question-container">
+    <h1>Type your question to ask :</h1>
+    <form action="question.html" method="get" id="question-form">
+      <input type="text" name="q" id="question-text" value="" maxlength="200">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <script>
+    const questionText = document.getElementById('question-text')
+    const form = document.getElementById('question-form')
+    form.addEventListener('submit', (event) => {
+      questionText.value = encodeToBase64(questionText.value)
+    });
+
+    function encodeToBase64(text) {
+      const bytes = new TextEncoder().encode(text)
+      const binString = String.fromCodePoint(...bytes)
+    
+      return btoa(binString)
+    }
+  </script>
+</body>
+</html>
