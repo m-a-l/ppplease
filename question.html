@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>♥♥ Please ♥♥</title>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -42,6 +42,7 @@
       position: absolute;
       left: 50vw;
       /* transition:left .15s linear, top .15s ease-in; */
+      transition: opacity 1s linear;
     }
     #question-text {
       text-align: center;
@@ -85,6 +86,19 @@
       const mouseX = event.clientX;
       const mouseY = event.clientY;
       reposition(nobutton, mouseX, mouseY);
+      if(isOutSideOfScreen(nobutton)) {;
+        nobutton.style.opacity = 0
+      }
+    }
+    // If more than half of the element is outside of the innerWidth / height up or down this function will return true
+    function isOutSideOfScreen(element) {
+      const left = parseInt(element.style.left)
+      const top = parseInt(element.style.top)
+      if((top >= window.innerHeight - element.offsetHeight/2) || (left >= window.innerWidth - element.offsetWidth/2) || 
+        (top <= element.offsetHeight/2) || (left <= element.offsetWidth/2)) {
+        return true
+      }
+      return false
     }
     // function moveRandomly(event) {
     //   const newX = getRandomButtonPos(150, window.innerWidth);
