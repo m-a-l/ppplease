@@ -35,13 +35,12 @@
     }
     button:hover {
       cursor: pointer;
+      background-color: #bbf4b8;
     }
     #nobutton {
       position: absolute;
       left: 50vw;
-    }
-    #yesbutton:hover {
-      background-color: #bbf4b8;
+      transition:left .15s linear, top .15s ease-in;
     }
     #question-text {
       text-align: center;
@@ -78,17 +77,26 @@
       questionContainer.classList.add('hidden');
       answeredyesContainer.classList.remove('hidden');
     });
-    nobutton.addEventListener('mouseover', handleMouseOver);
+    nobutton.addEventListener('mouseover', moveToCursor);
+    nobutton.addEventListener('click', moveToCursor);
 
-    function handleMouseOver(event) {
-      // Get the current mouse position
+    function moveToCursor(event) {
       const mouseX = event.clientX;
       const mouseY = event.clientY;
-      // Update the position of the element
-      nobutton.style.left = mouseX + "px";
-      nobutton.style.top = mouseY + "px";
+      reposition(nobutton, mouseX, mouseY);
     }
-
+    // function moveRandomly(event) {
+    //   const newX = getRandomButtonPos(150, window.innerWidth);
+    //   const newY = getRandomButtonPos(50, window.innerHeight);
+    //   reposition(nobutton, newX, newY);
+    // }
+    function reposition(element, x, y) {
+      element.style.left = x + "px";
+      element.style.top = x + "px";
+    }
+    // function getRandom(min, max) {
+    //   return Math.random() * (max - min) + min;
+    // }
 
     function decodeBase64(base64) {
       const binString = atob(base64);
