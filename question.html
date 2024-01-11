@@ -15,7 +15,7 @@
       font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       position: relative;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
     }
     .hidden {
       display: none;
@@ -41,7 +41,7 @@
     #nobutton {
       position: absolute;
       left: 50vw;
-      transition:left .15s linear, top .15s ease-in;
+      /* transition:left .15s linear, top .15s ease-in; */
     }
     #question-text {
       text-align: center;
@@ -93,7 +93,7 @@
     // }
     function reposition(element, x, y) {
       element.style.left = x + "px";
-      element.style.top = x + "px";
+      element.style.top = y + "px";
     }
     // function getRandom(min, max) {
     //   return Math.random() * (max - min) + min;
